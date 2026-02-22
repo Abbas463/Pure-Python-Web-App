@@ -16,8 +16,15 @@ def index():
                 Span(id='count', cls='text-2xl font-bold')(counter),
                 Button('➕', hx_post='/inc', hx_target='#count')
             ) 
-        )
-        
+        ),
+        Card (cls='p-6')(
+            Form(hx_post='/hello', hx_target='#result')(
+                Input(name='name', placeholder='Your name',cls='mb-2'),
+                Button('Say Hello', cls=ButtonT.primary)
+            ),
+            Div(id='result', cls='mt-4 font-bold ')
+        ),
+        cls=ContainerT.sm
     )
 
 @rt('/inc', methods=['POST'])
@@ -35,3 +42,5 @@ def dec():
 @rt('/hello',methods=['POST'])
 def hello(name:str):
     return f'Hello {name}!'
+
+serve()
