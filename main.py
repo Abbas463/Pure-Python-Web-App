@@ -12,10 +12,12 @@ def index():
         Card (cls='p-6 text-center mb-4')(
             H2('Click the buttons!', cls='mb-4'),
             Div(cls='flex items-center justify-center gap-4')(
-                Button('-', hx_post='/dec', hx_target='#count'),
-                Span(id='count', cls='text-2xl font-bold')(counter)
+                Button('➖', hx_post='/dec', hx_target='#count'),
+                Span(id='count', cls='text-2xl font-bold')(counter),
+                Button('➕', hx_post='/inc', hx_target='#count')
             ) 
         )
+        
     )
 
 @rt('/inc', methods=['POST'])
